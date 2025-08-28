@@ -1,5 +1,6 @@
 import cloudinary from "../configs/cloudinary.js";
 import sql from "../configs/connectDB.js";
+import redis from "../configs/redis.js";
 import getBuffer from "../utils/dataUri.js";
 import TryCatch from "../utils/TryCatch.js";
 
@@ -32,6 +33,8 @@ export const addAlbum = TryCatch(async (req, res) => {
     VALUES (${title},${description},${upload.secure_url})
     RETURNING *
   `;
+
+  await redis.del("album");
 
   res.status(201).json({ message: "add Song sucessful", album: query[0] });
 });
@@ -83,6 +86,8 @@ export const addSong = TryCatch(async (req, res) => {
     (${title},${description},${upload.secure_url},${queryIsAlbum[0].id})
     RETURNING *
   `;
+
+  await redis.del("song");
 
   res.status(201).json({ message: "add Song sucessful" });
 });

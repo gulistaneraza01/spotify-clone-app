@@ -6,6 +6,7 @@ const authServiceURL = process.env.AUTH_SERVICE_URL;
 const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY;
 const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET;
 const cloudinaryCloudName = process.env.CLOUDINARY_CLOUD_NAME;
+const redisURL = process.env.REDIS_URL;
 
 export {
   postgresUri,
@@ -13,4 +14,5 @@ export {
   cloudinaryApiKey,
   cloudinaryApiSecret,
   cloudinaryCloudName,
+  redisURL,
 };
