@@ -29,7 +29,6 @@ const isAuth = async (req, res, next) => {
       return;
     }
 
-    console.log(user);
     req.user = user;
 
     next();
