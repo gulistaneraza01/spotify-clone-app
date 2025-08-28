@@ -99,7 +99,7 @@ export const addThumbnailToSong = TryCatch(async (req, res) => {
     WHERE id = ${id}
   `;
 
-  if (!queryIsSong || queryIsSong === 0) {
+  if (!queryIsSong || queryIsSong.length === 0) {
     res.status(400).json({ message: "songs id is wrong" });
     return;
   }
@@ -145,7 +145,7 @@ export const deleteAlbum = TryCatch(async (req, res) => {
     WHERE id = ${id}
   `;
 
-  if (!queryIsAlbum || queryIsAlbum === 0) {
+  if (!queryIsAlbum || queryIsAlbum.length === 0) {
     res.status(400).json({ message: "albums id is wrong" });
     return;
   }
@@ -175,11 +175,11 @@ export const deleteSong = TryCatch(async (req, res) => {
     SELECT * FROM songs
     WHERE id = ${id}
   `;
-  if (!queryIsSong || queryIsSong === 0) {
+  if (!queryIsSong || queryIsSong.length === 0) {
     res.status(400).json({ message: "songs id is wrong" });
     return;
   }
-
+  console.log(queryIsSong);
   const queryDeleteSong = await sql`
     DELETE FROM songs
     WHERE id = ${id}
